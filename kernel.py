@@ -61,7 +61,6 @@ testX=testX.reshape(len(testX), 28, 28, 1)
 
 trainY=to_categorical(trainY, num_classes=10)
 testY=to_categorical(testY, num_classes=10)
-#foo
 model = Sequential()
 model.add(Conv2D(128, (3, 3), input_shape=(28, 28, 1), activation='relu'))
 model.add(Conv2D(256, (3, 3), activation='relu'))
