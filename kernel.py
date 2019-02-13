@@ -8,13 +8,19 @@ from keras.layers import Flatten
 from keras.utils import to_categorical
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
 
 
 
 trainPath="./train.csv"
 testPath="./test.csv"
 
-train=pd.read_csv(trainPath, sep=",", skiprows=1).astype(dtype=float).values
+data=pd.read_csv(trainPath, sep=",", skiprows=1).astype(dtype=float).values
+
+
+(train, test) = train_test_split(data, test_size=0.25, random_state=42)
+
+
 print(train.shape)
 
 trainX = np.zeros((len(train), 28, 28))
@@ -28,7 +34,9 @@ for i in range(len(train)):
         c += 1
     trainX[i] = digitArr
 
-test=pd.read_csv(testPath, sep=",", skiprows=1).astype(dtype=float).values
+
+
+#test=pd.read_csv(testPath, sep=",", skiprows=1).astype(dtype=float).values
 
 
 testX = np.zeros((len(test), 28, 28))
